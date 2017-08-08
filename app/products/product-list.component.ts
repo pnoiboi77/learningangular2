@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: 'app/products/product-list.component.html'
+    moduleId: module.id,
+    templateUrl: 'product-list.component.html',
+    styleUrls: ['product-list.component.css']
 })
 
-export class ProductListComponent {
+/* Component Life Cycle
+----------------------------
+1. Create
+2. Render
+3. Create and Render Children
+4. Process Changes
+5. Destroy
+*/
+
+export class ProductListComponent
+    implements OnInit {
+
     title: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
     listFilter: string;
-    products: any[] = [
+    products: IProduct[] = [
         {
             'productId': 1,
             'name': 'Babel',
@@ -36,5 +50,9 @@ export class ProductListComponent {
 
     toggleImage(): void {
         this.showImage = !this.showImage;
+    }    
+
+    ngOnInit(): void {
+        console.log('Component Initialized.');
     }
 }

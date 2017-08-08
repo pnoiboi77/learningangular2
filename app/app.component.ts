@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-    pageTitle: string = 'My First Angular 2 app';
+    pageTitle: string = 'Angular 2';
 }

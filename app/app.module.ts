@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 import { ProductListComponent } from './products/product-list.component';
+import { ProductFilterPipe } from './products/product-filter.pipe';
 
 @NgModule({
   imports: [ // third party modules
@@ -11,7 +12,8 @@ import { ProductListComponent } from './products/product-list.component';
     FormsModule ],
   declarations: [ // modules local to application
     AppComponent,
-    ProductListComponent ],
+    ProductListComponent,
+    ProductFilterPipe ],
   bootstrap: [ AppComponent ] // starting component
 })
 export class AppModule { }
