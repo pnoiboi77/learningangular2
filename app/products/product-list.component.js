@@ -18,14 +18,15 @@ var ProductListComponent = (function () {
         this.imageWidth = 50;
         this.imageMargin = 2;
         this.showImage = false;
-        this.products = [];
     }
     ProductListComponent.prototype.toggleImage = function () {
         this.showImage = !this.showImage;
     };
     ProductListComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log('Component Initialized.');
-        this.products = this._ps.getProducts();
+        this._ps.getProducts()
+            .subscribe(function (data) { return _this.products = data; }, function (error) { return _this.errorMessage = error; });
     };
     ProductListComponent.prototype.onRatingClicked = function (message) {
         this.title = 'Product List: ' + message;

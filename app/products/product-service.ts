@@ -1,41 +1,29 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+
 import { IProduct } from './product';
 
 @Injectable()
-
+// Observable operators map, filter, take, merge.
+// rxmarbles.com
 export class ProductService {
-    getProducts(): IProduct[] {
-        return [
-            {
-                'productId': 1,
-                'name': 'Babel',
-                'code': 'G22-SDFF',
-                'available': 'March 18, 2016',
-                'description': 'blah',
-                'price': 20.99,
-                'rating': 4.2,
-                'imageUrl': 'https://openclipart.org/image/2400px/svg_to_png/284562/publicdomainq-strong_smartphone-mobile-phone.png'
-            },
-            {
-                'productId': 3,
-                'name': 'Hot Dog',
-                'code': 'ABB-388D',
-                'available': 'December 18, 2016',
-                'description': 'blah',
-                'price': 40.99,
-                'rating': 1.5,
-                'imageUrl': 'https://openclipart.org/image/2400px/svg_to_png/284560/Fish-colored-remix.png'
-            },
-            {
-                'productId': 3,
-                'name': 'Hot Dog',
-                'code': 'ABB-388D',
-                'available': 'December 18, 2016',
-                'description': 'blah',
-                'price': 40.99,
-                'rating': 3.5,
-                'imageUrl': 'https://openclipart.org/image/2400px/svg_to_png/284560/Fish-colored-remix.png'
-            }
-        ];
+    private _productUrl = 'api/products/products.json';
+
+    constructor(private _http: Http) { }
+
+    getProducts(): Observable<IProduct[]> {
+        return this._http.get(this._productUrl)
+            .map((response: Response) => <IProduct[]>response.json())
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    private handleError(error: Response) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
     }
 }

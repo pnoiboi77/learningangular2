@@ -26,7 +26,8 @@ export class ProductListComponent
     imageMargin: number = 2;
     showImage: boolean = false;
     listFilter: string;
-    products: IProduct[] = [];
+    errorMessage: string;
+    products: IProduct[];
     
     constructor(private _ps: ProductService) { }
 
@@ -36,7 +37,10 @@ export class ProductListComponent
 
     ngOnInit(): void {
         console.log('Component Initialized.');
-        this.products = this._ps.getProducts();
+        this._ps.getProducts()
+            .subscribe(
+                data => this.products = data,
+                error => this.errorMessage = <any>error);
     }
 
     onRatingClicked(message: string): void {
