@@ -43,6 +43,16 @@ export class ProductListComponent
             'available': 'December 18, 2016',
             'description': 'blah',
             'price': 40.99,
+            'rating': 1.5,
+            'imageUrl': 'https://openclipart.org/image/2400px/svg_to_png/284560/Fish-colored-remix.png'
+        },
+        {
+            'productId': 3,
+            'name': 'Hot Dog',
+            'code': 'ABB-388D',
+            'available': 'December 18, 2016',
+            'description': 'blah',
+            'price': 40.99,
             'rating': 3.5,
             'imageUrl': 'https://openclipart.org/image/2400px/svg_to_png/284560/Fish-colored-remix.png'
         }
@@ -54,5 +64,9 @@ export class ProductListComponent
 
     ngOnInit(): void {
         console.log('Component Initialized.');
+    }
+
+    onRatingClicked(message: string): void {
+        this.title = 'Product List: ' + message;
     }
 }
