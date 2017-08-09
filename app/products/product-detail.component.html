@@ -2,7 +2,7 @@
     <div class="panel-heading">
         {{pageTitle}}
     </div>
-    <div class="panel-body">
+    <div class="panel-body">        
         <div class="col-md-6">
             <div class="col-md-10 col-md-offset-1">
                 <dl class="dl-horizontal">
@@ -25,5 +25,9 @@
                     [title]='product.name' />
             </div>
         </div>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-default"
+        (click)='onBack()'>Back</button>
     </div>
 </div>
