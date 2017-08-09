@@ -1,0 +1,29 @@
+<div class='panel panel-primary'>
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body">
+        <div class="col-md-6">
+            <div class="col-md-10 col-md-offset-1">
+                <dl class="dl-horizontal">
+                    <dt><h4>Product Name</h4></dt>
+                    <dd>{{product.name}}</dd>
+                    <dt><h4>Code</h4></dt>
+                    <dd>{{product.code}}</dd>
+                    <dt><h4>Available</h4></dt>
+                    <dd>{{product.available}}</dd>
+                    <dt><h4>Price</h4></dt>
+                    <dd>{{product.price | currency:'USD':true:'1.2-2'}}</dd>
+                    <dt><h4>Rating</h4></dt>
+                    <dd><ai-star [rating]='product.rating'></ai-star></dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-2">
+                <img [src]='product.imageUrl'
+                    [title]='product.name' />
+            </div>
+        </div>
+    </div>
+</div>
